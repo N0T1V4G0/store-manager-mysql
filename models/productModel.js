@@ -13,5 +13,5 @@ exports.getByID = async (id) => {
     'SELECT * FROM StoreManager.products WHERE id = ?;',
     [id],
   );
-  return data;
+  return data[0];
 };

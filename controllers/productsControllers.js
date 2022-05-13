@@ -1,8 +1,12 @@
 const productsService = require('../services/productsService');
 
-exports.list = async (req, res) => {
-  const products = await productsService.list();
-  res.status(200).json(products);
+exports.list = async (req, res, next) => {
+  try {
+    const products = await productsService.list();
+    res.status(200).json(products);
+  } catch (e) {
+    next(e);
+  }
 };
 
 exports.getByID = async (req, res, next) => {
