@@ -1,3 +1,4 @@
+const AppError = require('../errors/AppError');
 const Product = require('../models/productModel');
 
 exports.list = async () => {
@@ -7,5 +8,8 @@ exports.list = async () => {
 
 exports.getByID = async (id) => {
   const product = await Product.getByID(id);
+  if (product.length < 1) {
+    throw new AppError('Product not found', 404);
+  }
   return product;
 };
