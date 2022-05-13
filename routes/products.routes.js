@@ -1,11 +1,11 @@
 const { Router } = require('express');
-const Product = require('../models/productModel');
+const productService = require('../services/productsService');
 
 const productsRoutes = Router();
 
 productsRoutes.get('/', async (req, res) => {
-  const products = await Product.list();
-  res.status(500).json({ products });
+  const products = await productService.list();
+  res.status(200).json(products);
 });
 
 module.exports = { productsRoutes };
