@@ -1,9 +1,8 @@
 const { Router } = require('express');
+const salesControllers = require('../controllers/salesControllers');
 
 const salesRoutes = Router();
 
-salesRoutes.get('/', (req, res) => {
-  res.status(500).json({ message: 'TODO' });
-});
+salesRoutes.get('/', salesControllers.list);
 
 module.exports = { salesRoutes };
