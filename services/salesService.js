@@ -8,7 +8,7 @@ exports.list = async () => {
 
 exports.getByID = async (id) => {
   const sale = await Sale.getByID(id);
-  if (!sale) {
+  if (sale.length < 1) {
     throw new AppError('Sale not found', 404);
   }
   return sale;
