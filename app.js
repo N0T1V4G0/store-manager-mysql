@@ -9,6 +9,7 @@ const app = express();
 app.get('/', (_request, response) => {
   response.send();
 });
+app.use(express.json());
 
 app.use('/products', productsRoutes);
 app.use('/sales', salesRoutes);
