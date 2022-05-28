@@ -6,7 +6,7 @@ const productSchema = Joi.object({
   quantity: Joi.number().min(1).required(),
 });
 
-const validateBodyMiddleware = (req, res, next) => {
+const validateProductBody = (req, res, next) => {
   const { name, quantity } = req.body;
   const { error } = productSchema.validate(req.body);
   if (error) {
@@ -16,4 +16,4 @@ const validateBodyMiddleware = (req, res, next) => {
   next();
 };
 
-module.exports = { validateBodyMiddleware };
+module.exports = validateProductBody;
