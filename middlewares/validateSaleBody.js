@@ -7,11 +7,11 @@ const saleSchema = Joi.object({
 });
 
 const validateSaleBody = (req, res, next) => {
-  const sales = [...req.body];
-  sales.forEach((sale) => {
-    const { error } = saleSchema.validate(sale);
+  const saleProducts = [...req.body];
+  saleProducts.forEach((product) => {
+    const { error } = saleSchema.validate(product);
     if (error) {
-      if (!sale.quantity || !sale.productId) throw new AppError(error.message);
+      if (!product.quantity || !product.productId) throw new AppError(error.message);
       throw new AppError(error.message, 422);
     }
   });
