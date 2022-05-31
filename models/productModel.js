@@ -25,3 +25,12 @@ exports.create = async ({ name, quantity }) => {
   const newProduct = { id: data.insertId, name, quantity };
   return newProduct;
 };
+
+exports.getByName = async (name) => {
+  const [data] = await connection.execute(
+    `SELECT * FROM StoreManager.products
+    WHERE name = ? LIMIT 1;`,
+    [name],
+  );
+  return data;
+};
