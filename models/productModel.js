@@ -34,3 +34,12 @@ exports.getByName = async (name) => {
   );
   return data[0];
 };
+
+exports.update = async ({ id, name, quantity }) => {
+  await connection.execute(
+    `UPDATE StoreManager.products
+    SET name = ?, quantity = ?
+    WHERE id = ?;`,
+    [name, quantity, id],
+  );
+};
