@@ -22,3 +22,13 @@ exports.create = async ({ name, quantity }) => {
   const newProduct = await Product.create({ name, quantity });
   return newProduct;
 };
+
+exports.update = async ({ id, name, quantity }) => {
+  const productAlreadyExists = await Product.getByID(id);
+  if (!productAlreadyExists) {
+    throw new AppError('Product not found', 404);
+  }
+  await Product.update({ id, name, quantity });
+  const updatedProduct = await Product.getByID(id);
+  return updatedProduct;
+};
