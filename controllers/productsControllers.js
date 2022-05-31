@@ -18,3 +18,13 @@ exports.getByID = async (req, res, next) => {
     next(e);
   }
 };
+
+exports.create = async (req, res, next) => {
+  try {
+    const { name, quantity } = req.body;
+    const newProduct = await productsService.create({ name, quantity });
+    res.status(201).json(newProduct);
+  } catch (e) {
+    next(e);
+  }
+};
