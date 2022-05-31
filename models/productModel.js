@@ -32,5 +32,5 @@ exports.getByName = async (name) => {
     WHERE name = ? LIMIT 1;`,
     [name],
   );
-  return data;
+  return data[0];
 };
