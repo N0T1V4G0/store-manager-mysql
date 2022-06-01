@@ -13,3 +13,7 @@ exports.getByID = async (id) => {
   }
   return sale;
 };
+
+exports.create = async () => {
+  // const saleId = await Sale.create();
+};

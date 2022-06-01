@@ -25,3 +25,11 @@ exports.getByID = async (id) => {
 
   return data;
 };
+
+exports.create = async () => {
+  const [data] = await connection.execute(
+    `INSERT INTO StoreManager.sales (id)
+    VALUES (null);`,
+  );
+  return data.insertId;
+};
