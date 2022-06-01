@@ -14,6 +14,15 @@ exports.getByID = async (id) => {
   return sale;
 };
 
-exports.create = async () => {
-  // const saleId = await Sale.create();
+exports.create = async (products) => {
+  const saleId = await Sale.create();
+  const productsArr = products.map(({ productId, quantity }) => 
+    Sale.registerSaleProducts({ saleId, productId, quantity }));
+
+  await Promise.all(productsArr);
+
+  return {
+    id: saleId,
+    itemsSold: products,
+  };
 };
