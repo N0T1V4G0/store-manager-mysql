@@ -6,7 +6,6 @@ const salesRoutes = Router();
 
 salesRoutes.get('/', salesControllers.list);
 salesRoutes.get('/:id', salesControllers.getByID);
-salesRoutes.post('/', validateSaleBody, (req, res) =>
-  res.status(500).json({ message: 'TODO' }));
+salesRoutes.post('/', validateSaleBody, salesControllers.create);
 
 module.exports = { salesRoutes };
