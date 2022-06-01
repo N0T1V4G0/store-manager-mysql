@@ -32,3 +32,11 @@ exports.update = async ({ id, name, quantity }) => {
   const updatedProduct = await Product.getByID(id);
   return updatedProduct;
 };
+
+exports.delete = async (id) => {
+  const productAlreadyExists = await Product.getByID(id);
+  if (!productAlreadyExists) {
+    throw new AppError('Product not found', 404);
+  }
+  await Product.delete(id);
+};
