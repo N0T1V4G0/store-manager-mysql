@@ -33,3 +33,12 @@ exports.create = async () => {
   );
   return data.insertId;
 };
+
+exports.registerSaleProducts = async ({ saleId, productId, quantity }) => {
+  const [data] = await connection.execute(
+    `INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity)
+    VALUES (?, ?, ?);`,
+    [saleId, productId, quantity],
+  );
+  return data[0];
+};
