@@ -39,3 +39,13 @@ exports.update = async (req, res, next) => {
     next(e);
   }
 };
+
+exports.delete = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await productsService.delete(id * 1);
+    return res.status(204).send();
+  } catch (e) {
+    next(e);
+  }
+};
