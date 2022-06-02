@@ -42,3 +42,13 @@ exports.registerSaleProducts = async ({ saleId, productId, quantity }) => {
   );
   return data[0];
 };
+
+exports.update = async ({ saleId, productId, quantity }) => {
+  const [data] = await connection.execute(
+    `UPDATE StoreManager.sales_products
+    SET product_id = ?, quantity = ?
+    WHERE sale_id = ?;`,
+    [productId, quantity, saleId],
+  );
+  return data[0];
+};
