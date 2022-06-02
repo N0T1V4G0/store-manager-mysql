@@ -27,3 +27,14 @@ exports.create = async (req, res, next) => {
     next(e);
   }
 };
+
+exports.update = async (req, res, next) => {
+  try {
+    const { id: saleId } = req.params;
+    const products = req.body;
+    const updatedSale = await salesService.update({ saleId, products });
+    return res.status(200).json(updatedSale);
+  } catch (e) {
+    next(e);
+  }
+};
