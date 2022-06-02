@@ -38,3 +38,11 @@ exports.update = async ({ saleId, products }) => {
     itemUpdated: products,
   };
 };
+
+exports.delete = async (id) => {
+  const sale = await Sale.getByID(id);
+  if (sale.length < 1) {
+    throw new AppError('Sale not found', 404);
+  }
+  await Sale.delete(id);
+};
