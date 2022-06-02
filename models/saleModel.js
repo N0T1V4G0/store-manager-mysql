@@ -52,3 +52,11 @@ exports.update = async ({ saleId, productId, quantity }) => {
   );
   return data[0];
 };
+
+exports.delete = async (id) => {
+  await connection.execute(
+    `DELETE FROM StoreManager.sales
+    WHERE id = ?;`,
+    [id],
+  );
+};
