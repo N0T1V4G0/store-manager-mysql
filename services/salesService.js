@@ -26,3 +26,15 @@ exports.create = async (products) => {
     itemsSold: products,
   };
 };
+
+exports.update = async ({ saleId, products }) => {
+  const updatedProducts = products.map(({ productId, quantity }) => 
+    Sale.update({ saleId, productId, quantity }));
+  
+  await Promise.all(updatedProducts);
+
+  return {
+    saleId,
+    itemUpdated: products,
+  };
+};
