@@ -44,13 +44,13 @@ exports.registerSaleProducts = async ({ saleId, productId, quantity }) => {
 };
 
 exports.update = async ({ saleId, productId, quantity }) => {
-  const [data] = await connection.execute(
-    `UPDATE StoreManager.sales_products
-    SET product_id = ?, quantity = ?
-    WHERE sale_id = ?`,
-    [productId, quantity, saleId],
+  await connection.execute(
+    `DELETE FROM StoreManager.sales_products
+    WHERE sale_id = ?;`,
+    [saleId],
   );
-  return data[0];
+  const newSaleProducts = await this.registerSaleProducts({ saleId, productId, quantity });
+  return newSaleProducts;
 };
 
 exports.delete = async (id) => {
