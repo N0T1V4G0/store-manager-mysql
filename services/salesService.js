@@ -15,8 +15,16 @@ exports.getByID = async (id) => {
 };
 
 exports.create = async (products) => {
+  const productsQuantity = products.map(async ({ quantity, productId }) => {
+    const productQuantity = await Sale.checkProductQuantity(productId);
+    if (productQuantity < quantity) throw new AppError('Such amount is not permitted to sell', 422);
+    return productQuantity;
+  });
+
+  await Promise.all(productsQuantity);
+
   const saleId = await Sale.create();
-  const productsArr = products.map(({ productId, quantity }) => 
+  const productsArr = products.map(({ productId, quantity }) =>
     Sale.registerSaleProducts({ saleId, productId, quantity }));
 
   await Promise.all(productsArr);
@@ -28,9 +36,9 @@ exports.create = async (products) => {
 };
 
 exports.update = async ({ saleId, products }) => {
-  const updatedProducts = products.map(({ productId, quantity }) => 
+  const updatedProducts = products.map(({ productId, quantity }) =>
     Sale.update({ saleId, productId, quantity }));
-  
+
   await Promise.all(updatedProducts);
 
   return {

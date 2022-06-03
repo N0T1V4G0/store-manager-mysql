@@ -1,4 +1,5 @@
 const express = require('express');
+require('express-async-errors');
 const errorMiddleware = require('./middlewares/error');
 const { productsRoutes } = require('./routes/products.routes');
 const { salesRoutes } = require('./routes/sales.routes');

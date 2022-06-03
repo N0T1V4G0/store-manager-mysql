@@ -60,3 +60,12 @@ exports.delete = async (id) => {
     [id],
   );
 };
+
+exports.checkProductQuantity = async (productId) => {
+  const [data] = await connection.execute(
+    `SELECT quantity FROM StoreManager.products
+    WHERE id = ?;`,
+    [productId],
+  );
+  return data[0].quantity;
+};
