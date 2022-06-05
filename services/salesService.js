@@ -26,7 +26,7 @@ exports.create = async (products) => {
 
   const saleId = await Sale.create();
   const productsArr = products.map(({ productId, quantity }) =>
-    Sale.registerSaleProducts({ saleId, productId, quantity }));
+    Sale.registerSaleProduct({ saleId, productId, quantity }));
 
   await Promise.all(productsArr);
 

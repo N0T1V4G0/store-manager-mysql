@@ -34,7 +34,7 @@ exports.create = async () => {
   return data.insertId;
 };
 
-exports.registerSaleProducts = async ({ saleId, productId, quantity }) => {
+exports.registerSaleProduct = async ({ saleId, productId, quantity }) => {
   const [data] = await connection.execute(
     `INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity)
     VALUES (?, ?, ?);`,
@@ -49,12 +49,12 @@ exports.update = async ({ saleId, productId, quantity }) => {
     WHERE sale_id = ?;`,
     [saleId],
   );
-  const newSaleProducts = await this.registerSaleProducts({
+  const newSaleProduct = await this.registerSaleProduct({
     saleId,
     productId,
     quantity,
   });
-  return newSaleProducts;
+  return newSaleProduct;
 };
 
 exports.delete = async (id) => {
@@ -84,12 +84,11 @@ exports.subtractProductQuantity = async ({ productId, quantity }) => {
 };
 
 exports.restoreProductQuantity = async (sale) => {
-  console.log(sale);
-  const whatever = sale.map(({ productId, quantity }) => connection.execute(
+  const updatedProductQnt = sale.map(({ productId, quantity }) => connection.execute(
       `UPDATE StoreManager.products
       SET quantity = quantity + ?
       WHERE id = ?;`,
       [quantity, productId],
     ));
-  await Promise.all(whatever);
+  await Promise.all(updatedProductQnt);
 };
