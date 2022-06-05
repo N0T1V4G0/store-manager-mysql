@@ -33,7 +33,11 @@ exports.update = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { name, quantity } = req.body;
-    const updatedProduct = await productsService.update({ id: id * 1, name, quantity });
+    const updatedProduct = await productsService.update({
+      id: id * 1,
+      name,
+      quantity,
+    });
     return res.status(200).json(updatedProduct);
   } catch (e) {
     next(e);

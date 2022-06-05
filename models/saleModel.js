@@ -49,7 +49,11 @@ exports.update = async ({ saleId, productId, quantity }) => {
     WHERE sale_id = ?;`,
     [saleId],
   );
-  const newSaleProducts = await this.registerSaleProducts({ saleId, productId, quantity });
+  const newSaleProducts = await this.registerSaleProducts({
+    saleId,
+    productId,
+    quantity,
+  });
   return newSaleProducts;
 };
 
@@ -68,4 +72,13 @@ exports.checkProductQuantity = async (productId) => {
     [productId],
   );
   return data[0].quantity;
+};
+
+exports.subtractProductQuantity = async ({ productId, quantity }) => {
+  await connection.execute(
+    `UPDATE StoreManager.products
+    SET quantity = quantity - ?
+    WHERE id = ?;`,
+    [quantity, productId],
+  );
 };

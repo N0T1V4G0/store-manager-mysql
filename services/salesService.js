@@ -18,6 +18,7 @@ exports.create = async (products) => {
   const productsQuantity = products.map(async ({ quantity, productId }) => {
     const productQuantity = await Sale.checkProductQuantity(productId);
     if (productQuantity < quantity) throw new AppError('Such amount is not permitted to sell', 422);
+    await Sale.subtractProductQuantity({ productId, quantity });
     return productQuantity;
   });
 
