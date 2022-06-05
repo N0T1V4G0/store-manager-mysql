@@ -10,7 +10,7 @@ const validateProductBody = (req, res, next) => {
   const { name, quantity } = req.body;
   const { error } = productSchema.validate(req.body);
   if (error) {
-    if (!name || !quantity) throw new AppError(error.message);
+    if (!name || (!quantity && quantity !== 0)) throw new AppError(error.message);
     throw new AppError(error.message, 422);
   }
   next();
