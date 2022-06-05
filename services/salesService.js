@@ -53,5 +53,6 @@ exports.delete = async (id) => {
   if (sale.length < 1) {
     throw new AppError('Sale not found', 404);
   }
+  await Sale.restoreProductQuantity(sale);
   await Sale.delete(id);
 };

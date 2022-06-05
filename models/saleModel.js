@@ -82,3 +82,14 @@ exports.subtractProductQuantity = async ({ productId, quantity }) => {
     [quantity, productId],
   );
 };
+
+exports.restoreProductQuantity = async (sale) => {
+  console.log(sale);
+  const whatever = sale.map(({ productId, quantity }) => connection.execute(
+      `UPDATE StoreManager.products
+      SET quantity = quantity + ?
+      WHERE id = ?;`,
+      [quantity, productId],
+    ));
+  await Promise.all(whatever);
+};
