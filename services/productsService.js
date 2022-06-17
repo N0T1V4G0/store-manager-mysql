@@ -12,16 +12,14 @@ exports.getByID = async (id) => {
 exports.create = async ({ name, quantity }) => {
   const productAlreadyExists = await Product.getByName(name);
   if (productAlreadyExists) throw new AppError('Product already exists', 409);
-  const newProduct = await Product.create({ name, quantity });
-  return newProduct;
+  return Product.create({ name, quantity });
 };
 
 exports.update = async ({ id, name, quantity }) => {
   const productAlreadyExists = await Product.getByID(id);
   if (!productAlreadyExists) throw new AppError('Product not found', 404);
   await Product.update({ id, name, quantity });
-  const updatedProduct = await Product.getByID(id);
-  return updatedProduct;
+  return Product.getByID(id);
 };
 
 exports.delete = async (id) => {
