@@ -83,8 +83,8 @@ exports.subtractProductQuantity = async ({ productId, quantity }) => {
   );
 };
 
-exports.restoreProductQuantity = async (sale) => {
-  const updatedProductQnt = sale.map(({ productId, quantity }) => connection.execute(
+exports.restoreProductQuantity = async (saleProducts) => {
+  const updatedProductQnt = saleProducts.map(({ productId, quantity }) => connection.execute(
       `UPDATE StoreManager.products
       SET quantity = quantity + ?
       WHERE id = ?;`,

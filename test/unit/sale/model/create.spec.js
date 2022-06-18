@@ -14,7 +14,6 @@ describe("Create new sale model", () => {
   });
   it("should return new sale's id", async () => {
     const saleId = await Sale.create();
-    console.log(saleId);
     expect(saleId).to.be.an("number");
   });
 });

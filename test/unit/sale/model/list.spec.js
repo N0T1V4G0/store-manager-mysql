@@ -40,7 +40,6 @@ describe("List sales model", () => {
 
     it("should return an array objects", async () => {
       const results = await Sale.list();
-      console.log(results);
       expect(results).to.be.an("array");
       expect(results).not.to.be.empty;
       results.forEach((r) => expect(r).to.be.an("object"));
