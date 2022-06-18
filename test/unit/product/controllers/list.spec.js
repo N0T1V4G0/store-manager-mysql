@@ -37,4 +37,27 @@ describe("List sales controller", () => {
       expect(response.json.calledWith(sinon.match.array)).to.be.equal(true);
     });
   });
+
+  describe("when service throws an error", () => {
+    const response = {};
+    const request = {};
+    let next;
+
+    const err = Error("service error");
+
+    beforeEach(() => {
+      request.body = {};
+      next = sinon.stub();
+      sinon.stub(productService, "list").throws(err);
+    });
+
+    afterEach(() => {
+      productService.list.restore();
+    });
+
+    it("should pass error to next function", async () => {
+      await productControllers.list(request, response, next);
+      sinon.assert.calledWith(next, sinon.match(err));
+    });
+  });
 });
