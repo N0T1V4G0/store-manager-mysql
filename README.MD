@@ -1,4 +1,4 @@
-# Welcome to Store Manager's repository!
+# **Welcome to Store Manager's repository!**
 
 [pt-br README](README-pt.MD)
 
@@ -12,4 +12,17 @@ The application has 60% test coverage.
 
 ### **_WARNING_**: please, use docker-compose to run the application.
 
-_Documentation in progress..._
+## _Documentation: in progress..._
+
+![alt text](./public/swagger-docs.jpeg)
+
+- [x] POST /products route.
+- [x] GET /products route.
+- [ ] GET /products/:id route.
+- [ ] UPDATE /products/:id route.
+- [ ] DELETE /products/:id route.
+- [ ] POST /sales route.
+- [ ] GET /sales route.
+- [ ] GET /sales/:id route.
+- [ ] UPDATE /sales/:id route.
+- [ ] DELETE /sales/:id route.

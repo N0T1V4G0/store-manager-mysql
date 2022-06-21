@@ -1,0 +1,95 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Store Manager Docs",
+    "description": "Simple RESTful API to manage sales and products from store.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "lucasbcode@gmail.com"
+    }
+  },
+  "paths": {
+    "/products": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Create new product",
+        "description": "Create new product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "name": "Apples",
+                  "quantity": 20
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product created"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "409": {
+            "description": "Product already exists"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Products"],
+        "summary": "List all products",
+        "description": "List all products",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Oranges"
+                      },
+                      "quantity": {
+                        "type": "number",
+                        "example": 30
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}
