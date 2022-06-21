@@ -1,7 +1,5 @@
 <h1 align="center"><strong>Welcome to Store Manager's repository!</strong></h1>
 
-[pt-br README](README-pt.MD)
-
 <h2 align="center">
   <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="javascript" />
   <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="node" />
@@ -10,6 +8,8 @@
   <img src="https://img.shields.io/badge/-mocha-%238D6748?style=for-the-badge&logo=mocha&logoColor=white" alt="mocha" />
   <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="docker" />
 </h2>
+
+[pt-br README](README-pt.MD)
 
 ### Project Description:
 
