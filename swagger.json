@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Store Manager Docs",
+    "description": "Simple RESTful API to manage sales and products from store",
+    "version": "1.0.0",
+    "contact": {
+      "email": "lucasbcode@gmail.com"
+    }
+  }
+}
