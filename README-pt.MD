@@ -1,4 +1,4 @@
-# Boas-vindas ao repositório do Projeto Store Manager!
+# **Boas-vindas ao repositório do Projeto Store Manager!**
 
 A API desenvolvida é um sistema de gerenciamento de vendas em que é possível criar, visualizar, deletar e atualizar produtos e vendas.
 
@@ -10,4 +10,17 @@ A aplicação possui 60% de cobertura de testes.
 
 ### **_Atenção_**: utilize docker-compose para rodar a aplicação.
 
-_Documentação em progresso..._
+## _Documentação: em progresso..._
+
+![alt text](./public/swagger-docs.jpeg)
+
+- [x] POST /products route.
+- [x] GET /products route.
+- [ ] GET /products/:id route.
+- [ ] UPDATE /products/:id route.
+- [ ] DELETE /products/:id route.
+- [ ] POST /sales route.
+- [ ] GET /sales route.
+- [ ] GET /sales/:id route.
+- [ ] UPDATE /sales/:id route.
+- [ ] DELETE /sales/:id route.
