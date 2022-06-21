@@ -7,5 +7,52 @@
     "contact": {
       "email": "lucasbcode@gmail.com"
     }
+  },
+  "paths": {
+    "/products": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Create new product",
+        "description": "Create new product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "name": "Apples",
+                  "quantity": 20
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product created"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "409": {
+            "description": "Product already exists"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
   }
 }
